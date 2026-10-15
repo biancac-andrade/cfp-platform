@@ -2,17 +2,17 @@
 
 ## 1. Shared Contract & Dependencies
 
-- [ ] 1.1 Install `class-validator` and `class-transformer` in root dependencies and verify installation with `npm ls class-validator class-transformer`
-- [ ] 1.2 Update `shared-types/src/lib/speaker.dto.ts` to export `SpeakerDTO` as a class decorated with `class-validator` rules (`@IsString()`, `@IsNotEmpty()`, `@IsEmail()`, `@IsBoolean()`, `@IsOptional()`) and verify compilation with `npx tsc --noEmit -p shared-types/tsconfig.json`
-- [ ] 1.3 Export `SpeakerDTO` from `shared-types/src/index.ts` and verify resolution via path alias `@cfp-platform/shared-types`
+- [x] 1.1 Install `class-validator` and `class-transformer` in root dependencies and verify installation with `npm ls class-validator class-transformer`
+- [x] 1.2 Update `shared-types/src/lib/speaker.dto.ts` to export `SpeakerDTO` as a class decorated with `class-validator` rules (`@IsString()`, `@IsNotEmpty()`, `@IsEmail()`, `@IsBoolean()`, `@IsOptional()`) and verify compilation with `npx tsc --noEmit -p shared-types/tsconfig.json`
+- [x] 1.3 Export `SpeakerDTO` from `shared-types/src/index.ts` and verify resolution via path alias `@cfp-platform/shared-types`
 
 ## 2. Backend CFP API & Validation (NestJS in `api`)
 
-- [ ] 2.1 Enable global `ValidationPipe` with `{ whitelist: true, forbidNonWhitelisted: true, transform: true }` in `api/src/main.ts` or scoped module pipe to strictly validate incoming requests
-- [ ] 2.2 Create `CfpService` in `api/src/app/cfp/cfp.service.ts` to process and persist/store speaker submissions adhering to `SpeakerDTO`
-- [ ] 2.3 Create `CfpController` in `api/src/app/cfp/cfp.controller.ts` with `POST /api/cfp` endpoint accepting `@Body() speakerDto: SpeakerDTO` and returning `201 Created`
-- [ ] 2.4 Register `CfpModule` in `api/src/app/app.module.ts` and verify application starts without dependency injection errors
-- [ ] 2.5 Write Jest unit tests in `api/src/app/cfp/cfp.controller.spec.ts` and `cfp.service.spec.ts` verifying that valid payloads are accepted and invalid payloads (missing required fields, malformed email, extra fields) throw `BadRequestException` (`400 Bad Request`); verify with `npx nx test api`
+- [x] 2.1 Enable global `ValidationPipe` with `{ whitelist: true, forbidNonWhitelisted: true, transform: true }` in `api/src/main.ts` or scoped module pipe to strictly validate incoming requests
+- [x] 2.2 Create `CfpService` in `api/src/app/cfp/cfp.service.ts` to process and persist/store speaker submissions adhering to `SpeakerDTO`
+- [x] 2.3 Create `CfpController` in `api/src/app/cfp/cfp.controller.ts` with `POST /api/cfp` endpoint accepting `@Body() speakerDto: SpeakerDTO` and returning `201 Created`
+- [x] 2.4 Register `CfpModule` in `api/src/app/app.module.ts` and verify application starts without dependency injection errors
+- [x] 2.5 Write Jest unit tests in `api/src/app/cfp/cfp.controller.spec.ts` and `cfp.service.spec.ts` verifying that valid payloads are accepted and invalid payloads (missing required fields, malformed email, extra fields) throw `BadRequestException` (`400 Bad Request`); verify with `npx nx test api`
 
 ## 3. Frontend CFP Component, Signals & Accessibility (Angular in `frontend`)
 
