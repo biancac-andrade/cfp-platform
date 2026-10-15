@@ -1,0 +1,130 @@
+<section class="cfp-container" aria-labelledby="cfp-heading">
+  <h2 id="cfp-heading" class="cfp-title">Call for Papers (CFP) Submission</h2>
+  <p class="cfp-subtitle">Submit your proposal to speak at our upcoming conference.</p>
+
+  <form (submit)="onSubmit($event)" class="cfp-form" novalidate>
+    <!-- Name Field -->
+    <div class="form-group">
+      <label for="speaker-name" class="form-label">
+        Full Name <span class="required" aria-hidden="true">*</span>
+      </label>
+      <input
+        id="speaker-name"
+        name="name"
+        type="text"
+        class="form-input"
+        [value]="name()"
+        (input)="onNameInput($event)"
+        (blur)="onBlur('name')"
+        [attr.aria-invalid]="nameError() ? 'true' : 'false'"
+        [attr.aria-describedby]="nameError() ? 'name-error' : null"
+        required
+        autocomplete="name"
+      />
+      @if (nameError()) {
+        <span id="name-error" class="field-error" role="alert">
+          {{ nameError() }}
+        </span>
+      }
+    </div>
+
+    <!-- Email Field -->
+    <div class="form-group">
+      <label for="speaker-email" class="form-label">
+        Email Address <span class="required" aria-hidden="true">*</span>
+      </label>
+      <input
+        id="speaker-email"
+        name="email"
+        type="email"
+        class="form-input"
+        [value]="email()"
+        (input)="onEmailInput($event)"
+        (blur)="onBlur('email')"
+        [attr.aria-invalid]="emailError() ? 'true' : 'false'"
+        [attr.aria-describedby]="emailError() ? 'email-error' : null"
+        required
+        autocomplete="email"
+      />
+      @if (emailError()) {
+        <span id="email-error" class="field-error" role="alert">
+          {{ emailError() }}
+        </span>
+      }
+    </div>
+
+    <!-- Talk Title Field -->
+    <div class="form-group">
+      <label for="speaker-talk-title" class="form-label">
+        Talk Title <span class="required" aria-hidden="true">*</span>
+      </label>
+      <input
+        id="speaker-talk-title"
+        name="talkTitle"
+        type="text"
+        class="form-input"
+        [value]="talkTitle()"
+        (input)="onTalkTitleInput($event)"
+        (blur)="onBlur('talkTitle')"
+        [attr.aria-invalid]="talkTitleError() ? 'true' : 'false'"
+        [attr.aria-describedby]="talkTitleError() ? 'talk-title-error' : null"
+        required
+      />
+      @if (talkTitleError()) {
+        <span id="talk-title-error" class="field-error" role="alert">
+          {{ talkTitleError() }}
+        </span>
+      }
+    </div>
+
+    <!-- Google Developer Expert Checkbox -->
+    <div class="form-group-checkbox">
+      <input
+        id="speaker-gde"
+        name="isGDE"
+        type="checkbox"
+        class="form-checkbox"
+        [checked]="isGDE()"
+        (change)="onGdeChange($event)"
+      />
+      <label for="speaker-gde" class="form-label-checkbox">
+        I am a Google Developer Expert (GDE)
+      </label>
+    </div>
+
+    <!-- Live Status Announcement Region -->
+    <div
+      role="status"
+      aria-live="polite"
+      aria-atomic="true"
+      class="status-region"
+    >
+      @if (isSubmitting()) {
+        <p class="status-submitting">Submitting your proposal...</p>
+      }
+      @if (submitSuccess()) {
+        <p class="status-success">{{ submitSuccess() }}</p>
+      }
+      @if (submitError()) {
+        <p class="status-error" role="alert">{{ submitError() }}</p>
+      }
+    </div>
+
+    <!-- Submit Button -->
+    <div class="form-actions">
+      <button
+        type="submit"
+        id="submit-proposal-btn"
+        class="submit-btn"
+        [disabled]="!isFormValid() || isSubmitting()"
+        [attr.aria-disabled]="!isFormValid() || isSubmitting()"
+      >
+        @if (isSubmitting()) {
+          Submitting...
+        } @else {
+          Submit Proposal
+        }
+      </button>
+    </div>
+  </form>
+</section>
