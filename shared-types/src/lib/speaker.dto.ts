@@ -7,17 +7,16 @@ import {
 } from 'class-validator';
 
 export class SpeakerDTO {
-  @IsString()
   @IsOptional()
+  @IsString()
   id?: string;
 
   @IsString()
   @IsNotEmpty()
   name!: string;
 
-  @IsString()
-  @IsNotEmpty()
   @IsEmail()
+  @IsNotEmpty()
   email!: string;
 
   @IsString()
@@ -25,6 +24,7 @@ export class SpeakerDTO {
   talkTitle!: string;
 
   @IsBoolean()
-  isGDE!: boolean;
+  @IsOptional()
+  isGDE?: boolean;
 }
 

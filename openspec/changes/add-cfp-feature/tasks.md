@@ -16,14 +16,14 @@
 
 ## 3. Frontend CFP Component, Signals & Accessibility (Angular in `frontend`)
 
-- [ ] 3.1 Create `CfpService` in `frontend/src/app/cfp/cfp.service.ts` to submit proposals via `HttpClient` consuming `SpeakerDTO` from `@cfp-platform/shared-types`
-- [ ] 3.2 Implement standalone `CfpFormComponent` in `frontend/src/app/cfp/cfp-form.component.ts` managing reactive state using Angular Signals (`signal()` for fields/submission states, `computed()` for `isFormValid`)
-- [ ] 3.3 Implement accessible template with WAI-ARIA standards (semantic `<label for="...">`, `aria-invalid`, `aria-describedby` error associations, `aria-live="polite"` status message, `[disabled]` and `aria-disabled` on submit button)
-- [ ] 3.4 Register `CfpFormComponent` route in `frontend/src/app/app.routes.ts` or embed in `frontend/src/app/app.ts` and verify template renders cleanly
-- [ ] 3.5 Write Jest unit tests in `frontend/src/app/cfp/cfp-form.component.spec.ts` verifying initial Signal state (empty values, `isFormValid() === false`), submit button disabled on initial load, submit button enabled when fields become valid, and state updates upon submission; verify with `npx nx test frontend`
+- [x] 3.1 Create `CfpService` in `frontend/src/app/cfp/cfp.service.ts` to submit proposals via `HttpClient` consuming `SpeakerDTO` from `@cfp-platform/shared-types`
+- [x] 3.2 Implement standalone `CfpFormComponent` in `frontend/src/app/cfp/cfp-form.component.ts` managing reactive state using Angular Signals (`signal()` for fields/submission states, `computed()` for `isFormValid`)
+- [x] 3.3 Implement accessible template with WAI-ARIA standards (semantic `<label for="...">`, `aria-invalid`, `aria-describedby` error associations, `aria-live="polite"` status message, `[disabled]` and `aria-disabled` on submit button)
+- [x] 3.4 Register `CfpFormComponent` route in `frontend/src/app/app.routes.ts` or embed in `frontend/src/app/app.ts` and verify template renders cleanly
+- [x] 3.5 Write Jest unit tests in `frontend/src/app/cfp/cfp-form.component.spec.ts` verifying initial Signal state (empty values, `isFormValid() === false`), submit button disabled on initial load, submit button enabled when fields become valid, and state updates upon submission; verify with `npx nx test frontend`
 
 ## 4. End-to-End Monorepo Quality & Verification
 
-- [ ] 4.1 Run type-checking and linter across workspace with `npx nx run-many -t lint` and verify zero errors
-- [ ] 4.2 Run all unit test suites in monorepo with `npx nx run-many -t test` and verify all tests pass
-- [ ] 4.3 Build both frontend and api applications with `npx nx run-many -t build` and verify successful production bundles
+- [x] 4.1 Run type-checking and linter across workspace with `npx nx run-many -t lint` and verify zero errors
+- [x] 4.2 Run all unit test suites in monorepo with `npx nx run-many -t test` and verify all tests pass
+- [x] 4.3 Build both frontend and api applications with `npx nx run-many -t build` and verify successful production bundles
