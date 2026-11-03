@@ -1,6 +1,15 @@
 <section class="cfp-container" aria-labelledby="cfp-heading">
-  <h2 id="cfp-heading" class="cfp-title">Call for Papers (CFP) Submission</h2>
-  <p class="cfp-subtitle">Submit your proposal to speak at our upcoming conference.</p>
+  <div class="form-header">
+    <div>
+      <h2 id="cfp-heading" class="cfp-title">Call for Papers (CFP) Submission</h2>
+      <p class="cfp-subtitle">Submit your proposal to speak at our upcoming conference.</p>
+    </div>
+    <div class="header-nav">
+      <a routerLink="/dashboard" id="view-dashboard-btn" class="nav-btn" aria-label="View submitted proposals dashboard">
+        View Dashboard
+      </a>
+    </div>
+  </div>
 
   <form (submit)="onSubmit($event)" class="cfp-form" novalidate>
     <!-- Name Field -->

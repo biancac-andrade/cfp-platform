@@ -13,4 +13,8 @@ export class CfpService {
   submitProposal(speaker: SpeakerDTO): Observable<SpeakerDTO> {
     return this.http.post<SpeakerDTO>(this.apiUrl, speaker);
   }
+
+  getProposals(): Observable<SpeakerDTO[]> {
+    return this.http.get<SpeakerDTO[]>(this.apiUrl);
+  }
 }

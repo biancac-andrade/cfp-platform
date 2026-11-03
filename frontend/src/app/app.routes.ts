@@ -1,5 +1,6 @@
 import { Route } from '@angular/router';
 import { CfpFormComponent } from './cfp/cfp-form.component';
+import { CfpDashboardComponent } from './cfp/cfp-dashboard.component';
 
 export const appRoutes: Route[] = [
   {
@@ -10,5 +11,9 @@ export const appRoutes: Route[] = [
   {
     path: 'cfp',
     component: CfpFormComponent,
+  },
+  {
+    path: 'dashboard',
+    component: CfpDashboardComponent,
   },
 ];

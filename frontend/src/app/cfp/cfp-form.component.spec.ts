@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
 import { of, throwError } from 'rxjs';
 import { vi } from 'vitest';
 import { CfpFormComponent } from './cfp-form.component';
@@ -20,6 +21,7 @@ describe('CfpFormComponent', () => {
     await TestBed.configureTestingModule({
       imports: [CfpFormComponent],
       providers: [
+        provideRouter([]),
         {
           provide: CfpService,
           useValue: mockCfpService,
@@ -234,6 +236,20 @@ describe('CfpFormComponent', () => {
       expect(component.nameTouched()).toBe(true);
       expect(component.emailTouched()).toBe(true);
       expect(component.talkTitleTouched()).toBe(true);
+    });
+  });
+
+  describe('Dashboard Navigation Link', () => {
+    it('should have a navigation link to the dashboard with accessible attributes', () => {
+      const dashboardLink: HTMLAnchorElement = fixture.nativeElement.querySelector(
+        '#view-dashboard-btn'
+      );
+      expect(dashboardLink).toBeTruthy();
+      expect(dashboardLink.getAttribute('href')).toBe('/dashboard');
+      expect(dashboardLink.getAttribute('aria-label')).toBe(
+        'View submitted proposals dashboard'
+      );
+      expect(dashboardLink.textContent).toContain('View Dashboard');
     });
   });
 });

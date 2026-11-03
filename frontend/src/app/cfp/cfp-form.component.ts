@@ -1,12 +1,13 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { CfpService } from './cfp.service';
 import { SpeakerDTO } from '@cfp-platform/shared-types';
 
 @Component({
   selector: 'app-cfp-form',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './cfp-form.component.html',
   styleUrl: './cfp-form.component.css',
 })

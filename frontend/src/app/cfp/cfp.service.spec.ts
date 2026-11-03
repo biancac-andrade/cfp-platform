@@ -51,4 +51,33 @@ describe('CfpService', () => {
 
     req.flush(mockResponse);
   });
+
+  it('should retrieve proposals via GET /api/cfp', () => {
+    const mockProposals: SpeakerDTO[] = [
+      {
+        id: '1',
+        name: 'Jane Doe',
+        email: 'jane@example.com',
+        talkTitle: 'Building Accessible Angular Apps with Signals',
+        isGDE: true,
+      },
+      {
+        id: '2',
+        name: 'John Smith',
+        email: 'john@example.com',
+        talkTitle: 'State of NestJS',
+        isGDE: false,
+      },
+    ];
+
+    service.getProposals().subscribe((res) => {
+      expect(res).toEqual(mockProposals);
+      expect(res.length).toBe(2);
+    });
+
+    const req = httpTestingController.expectOne('/api/cfp');
+    expect(req.request.method).toBe('GET');
+
+    req.flush(mockProposals);
+  });
 });

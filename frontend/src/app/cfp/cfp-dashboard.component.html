@@ -1,0 +1,77 @@
+<section class="cfp-container" aria-labelledby="dashboard-heading">
+  <header class="dashboard-header">
+    <div>
+      <h2 id="dashboard-heading" class="cfp-title">Submitted Proposals</h2>
+      <p class="cfp-subtitle">Review all submitted talks for the conference.</p>
+    </div>
+    <div class="header-actions">
+      <a routerLink="/cfp" id="go-to-form-btn" class="nav-btn" aria-label="Go to talk submission form">
+        Submit Proposal
+      </a>
+    </div>
+  </header>
+
+  <!-- Live Status Region -->
+  <div
+    role="status"
+    aria-live="polite"
+    aria-atomic="true"
+    class="status-region"
+  >
+    @if (isLoading()) {
+      <p class="status-loading">Loading proposals...</p>
+    }
+    @if (errorMessage()) {
+      <div class="status-error" role="alert">
+        <span>{{ errorMessage() }}</span>
+        <button type="button" class="retry-btn" (click)="loadProposals()">
+          Try Again
+        </button>
+      </div>
+    }
+  </div>
+
+  @if (!isLoading() && !errorMessage()) {
+    @if (proposals().length === 0) {
+      <div class="empty-state" role="region" aria-label="No proposals">
+        <p class="empty-text">No talk proposals have been submitted yet.</p>
+        <a routerLink="/cfp" class="nav-btn empty-btn">
+          Be the first to submit a talk
+        </a>
+      </div>
+    } @else {
+      <div class="table-wrapper">
+        <table class="proposals-table">
+          <caption class="sr-only">List of submitted conference talk proposals</caption>
+          <thead>
+            <tr>
+              <th scope="col">Speaker</th>
+              <th scope="col">Email</th>
+              <th scope="col">Talk Title</th>
+              <th scope="col">GDE</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (proposal of proposals(); track proposal.id || proposal.email) {
+              <tr class="proposal-row">
+                <td class="speaker-name font-medium">{{ proposal.name }}</td>
+                <td class="speaker-email">{{ proposal.email }}</td>
+                <td class="talk-title">{{ proposal.talkTitle }}</td>
+                <td class="speaker-gde">
+                  @if (proposal.isGDE) {
+                    <span class="badge badge-gde" aria-label="Google Developer Expert">
+                      GDE
+                    </span>
+                  } @else {
+                    <span class="badge-regular" aria-hidden="true">—</span>
+                    <span class="sr-only">Not a GDE</span>
+                  }
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    }
+  }
+</section>
