@@ -1,0 +1,58 @@
+<section class="cfp-container" aria-labelledby="event-heading">
+  <div class="form-header">
+    <div>
+      <h2 id="event-heading" class="cfp-title">Event Registration</h2>
+      <p class="cfp-subtitle">Register a new conference event.</p>
+    </div>
+    <a routerLink="/cfp" class="nav-btn">Back to CFP</a>
+  </div>
+
+  <form (submit)="onSubmit($event)" class="cfp-form" id="event-form">
+    <div class="form-group">
+      <label for="event-name" class="form-label">
+        Event Name <span class="required" aria-hidden="true">*</span>
+      </label>
+      <input id="event-name" name="name" type="text" class="form-input"
+        [value]="name()" (input)="onInput('name', $event)" required />
+    </div>
+
+    <div class="form-group">
+      <label for="event-address" class="form-label">
+        Address <span class="required" aria-hidden="true">*</span>
+      </label>
+      <input id="event-address" name="address" type="text" class="form-input"
+        [value]="address()" (input)="onInput('address', $event)" required />
+    </div>
+
+    <div class="form-group">
+      <label for="event-capacity" class="form-label">
+        Capacity <span class="required" aria-hidden="true">*</span>
+      </label>
+      <input id="event-capacity" name="capacity" type="number" min="1" class="form-input"
+        [value]="capacity()" (input)="onInput('capacity', $event)" required />
+    </div>
+
+    <div class="form-group">
+      <label for="event-date" class="form-label">
+        Date <span class="required" aria-hidden="true">*</span>
+      </label>
+      <input id="event-date" name="date" type="date" class="form-input"
+        [value]="date()" (input)="onInput('date', $event)" required />
+    </div>
+
+    <div role="status" aria-live="polite" aria-atomic="true" class="status-region">
+      @if (submitSuccess()) {
+        <p class="status-success">{{ submitSuccess() }}</p>
+      }
+      @if (submitError()) {
+        <p class="status-error" role="alert">{{ submitError() }}</p>
+      }
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" id="submit-event-btn" class="submit-btn" [disabled]="isSubmitting()">
+        @if (isSubmitting()) { Registering... } @else { Register Event }
+      </button>
+    </div>
+  </form>
+</section>
